@@ -1,0 +1,65 @@
+server: 
+  port: 30080
+  servlet: 
+    context-path: /sprintboot-service
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/plan?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true
+    loginName: root
+    password: 123
+    poolName: hikariCP
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 10
+    maxWait: 60000
+    minIdle: 10
+    connectionTimeout: 60000
+    maximum-pool-size: 30
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+  mvc:
+    async:
+      request-timeout: 20000
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8847
+        # 命名空间：sit、prd、dev
+        namespace: 00ce3738-89e9-46fd-9c44-675d9f4ef77c
+        # 分组
+        group: sit
+        # 集群
+        cluster-name: SH
+        # 版本
+        metadata:
+          version: v1
+    sentinel:
+      transport:
+        dashboard: localhost:8088
+      filter:
+        enabled: true
+
+#Redis
+  redis:
+    database: 0
+    host: 127.0.0.1
+    ## Redis服务器连接端口
+    port: 6379
+    ## 连接超时时间（毫秒）
+    timeout: 1000
+    ## Redis服务器连接密码（默认为空）
+    password:
+    pool:
+      # 连接池最大连接数（使用负值表示没有限制）
+      max-active: 200
+      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: -1
+      # 连接池中的最大空闲连接
+      max-idle: 100
+      # 连接池中的最小空闲连接
+      min-idle: 20

@@ -1,0 +1,11 @@
+#spring:
+#  application:
+#    name: springboot-service
+#  profiles:
+#    active: dev
+#  jackson:
+#    date-format: yyyy-MM-dd HH:mm:ss
+#    time-zone: Asia/Chongqing
+
+#logging:
+#  config: classpath:config/logs/logback.xml

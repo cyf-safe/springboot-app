@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: springboot-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8847
+        file-extension: yml
+        namespace: b9b658f5-237c-4a03-b776-6a669c244b3e
+        group: dev
+  profiles:
+    active: dev

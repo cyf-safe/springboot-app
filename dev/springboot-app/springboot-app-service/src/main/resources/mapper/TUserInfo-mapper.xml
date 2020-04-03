@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iokbl.persistence.TUserInfoMapper">
+	
+	<!-- 列结果resultMap chenyufei 2020-03-21 -->
+	<resultMap id="resultMap" type="com.iokbl.model.TUserInfo">
+        <result column="SID" property="sid"/>
+        <result column="USER_ID" property="user_id"/>
+        <result column="USER_NAME" property="user_name"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="REAL_NAME" property="real_name"/>
+		<result column="IS_MANAGER" property="isManager"/>
+		<result column="STATUS" property="status"/>
+        <result column="INSERT_USER" property="insert_user"/>
+        <result column="INSERT_TIME" property="insert_time"/>
+        <result column="UPDATE_USER" property="update_user"/>
+        <result column="UPDATE_TIME" property="update_time"/>
+	</resultMap>
+
+	<!-- 公共列 chenyufei 2020-03-21 -->
+	<sql id="columns">
+		SID, USER_ID, USER_NAME, PASSWORD, REAL_NAME, IS_MANAGER, STATUS,
+		INSERT_USER, INSERT_TIME, UPDATE_USER, UPDATE_TIME
+	</sql>
+
+	<!-- 公共条件 chenyufei 2020-03-21 -->
+	<sql id="whereSQL">
+		<if test="sid != null and sid != '' ">
+		AND SID = #{sid}
+		</if>
+		<if test="user_id != null and user_id != '' ">
+		AND USER_ID = #{user_id}
+		</if>
+		<if test="user_name != null and user_name != '' ">
+		AND USER_NAME = #{user_name}
+		</if>
+		<if test="password != null and password != '' ">
+		AND PASSWORD = #{password}
+		</if>
+		<if test="real_name != null and real_name != '' ">
+		AND REAL_NAME like concat('%',#{real_name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="isManager != null and isManager != '' ">
+		AND IS_MANAGER = #{isManager}
+		</if>
+		<if test="status != null and status != '' ">
+		AND STATUS = #{status}
+		</if>
+		<if test="insert_user != null and insert_user != '' ">
+		AND INSERT_USER = #{insert_user}
+		</if>
+		<if test="insert_time != null and insert_time != '' ">
+		AND INSERT_TIME = #{insert_time}
+		</if>
+		<if test="update_user != null and update_user != '' ">
+		AND UPDATE_USER = #{update_user}
+		</if>
+		<if test="update_time != null and update_time != '' ">
+		AND UPDATE_TIME = #{update_time}
+		</if>
+	</sql>
+
+	<!-- 公共分页条件SQL chenyufei 2020-03-21 -->
+	<sql id="wherePageSql">
+		<if test="paramMap.sid != null and paramMap.sid != '' ">
+		AND SID = #{paramMap.sid}
+		</if>
+		<if test="paramMap.user_id != null and paramMap.user_id != '' ">
+		AND USER_ID = #{paramMap.user_id}
+		</if>
+		<if test="paramMap.user_name != null and paramMap.user_name != '' ">
+		AND USER_NAME = #{paramMap.user_name}
+		</if>
+		<if test="paramMap.password != null and paramMap.password != '' ">
+		AND PASSWORD = #{paramMap.password}
+		</if>
+		<if test="paramMap.real_name != null and paramMap.real_name != '' ">
+		AND REAL_NAME like concat('%',#{paramMap.real_name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="paramMap.isManager != null and paramMap.isManager != '' ">
+		AND IS_MANAGER = #{paramMap.isManager}
+		</if>
+		<if test="paramMap.status != null and paramMap.status != '' ">
+		AND STATUS = #{paramMap.status}
+		</if>
+		<if test="paramMap.insert_user != null and paramMap.insert_user != '' ">
+		AND INSERT_USER = #{paramMap.insert_user}
+		</if>
+		<if test="paramMap.insert_time != null and paramMap.insert_time != '' ">
+		AND INSERT_TIME = #{paramMap.insert_time}
+		</if>
+		<if test="paramMap.update_user != null and paramMap.update_user != '' ">
+		AND UPDATE_USER = #{paramMap.update_user}
+		</if>
+		<if test="paramMap.update_time != null and paramMap.update_time != '' ">
+		AND UPDATE_TIME = #{paramMap.update_time}
+		</if>
+	</sql>
+
+	<!-- 根据主键ID查询 chenyufei 2020-03-21 -->
+	<select id="selectByPrimaryKey" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		  FROM T_USER_INFO 
+	     WHERE SID = #{sid}
+	</select>
+
+	<!-- 查询列表数据条数 chenyufei 2020-03-21 -->
+	<select id="selectCount" resultType="java.lang.Long">
+		SELECT count(1)
+		FROM T_USER_INFO
+		WHERE (1 = 1
+		<if test="user_name != null and user_name != '' ">
+			AND USER_NAME = #{user_name}
+		</if>
+		<if test="real_name != null and real_name != '' ">
+			AND REAL_NAME like concat('%',#{real_name,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="isManager != null and isManager != '' ">
+			AND IS_MANAGER = #{isManager}
+		</if>
+		<if test="status != null and status != '' ">
+			AND STATUS = #{status}
+		</if>
+		<if test="insert_user != null and insert_user != '' ">
+			AND INSERT_USER = #{insert_user}
+		</if>) OR USER_ID = #{user_id}
+	</select>
+
+	<!-- 查询列表 chenyufei 2020-03-21 -->
+	<select id="selectList" resultMap="resultMap">
+		SELECT <include refid="columns" /> from (
+			SELECT <include refid="columns" />
+			  FROM T_USER_INFO
+			 WHERE (1 = 1
+			<if test="user_name != null and user_name != '' ">
+				AND USER_NAME = #{user_name}
+			</if>
+			<if test="real_name != null and real_name != '' ">
+				AND REAL_NAME like concat('%',#{real_name,jdbcType=VARCHAR},'%')
+			</if>
+			<if test="isManager != null and isManager != '' ">
+				AND IS_MANAGER = #{isManager}
+			</if>
+			<if test="status != null and status != '' ">
+				AND STATUS = #{status}
+			</if>
+			<if test="insert_user != null and insert_user != '' ">
+				AND INSERT_USER = #{insert_user}
+			</if>) OR USER_ID = #{user_id}
+		 	 order by INSERT_TIME desc
+		) t
+		<if test="start != null and pageSize != null and pageSize != 0"> limit #{start}, #{pageSize}</if>
+	</select>
+
+	<!-- 查询列表 chenyufei 2020-03-21 -->
+	<select id="selectUserByUserName" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM T_USER_INFO WHERE STATUS = '1'
+		AND USER_NAME = #{user_name,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 查询所有用户 chenyufei 2020-03-21 -->
+	<select id="selectAllUser" resultMap="resultMap">
+		SELECT SID, USER_ID, USER_NAME, REAL_NAME
+		FROM T_USER_INFO WHERE STATUS = '1'
+		<if test="user_id != null and user_id != '' ">
+			AND USER_ID = #{user_id}
+		</if>
+	</select>
+
+	<!-- 插入 chenyufei 2020-03-21 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="sid" parameterType="com.iokbl.model.TUserInfo">
+        INSERT INTO T_USER_INFO (
+        	USER_ID,
+        	USER_NAME,
+        	PASSWORD,
+        	REAL_NAME,
+        	IS_MANAGER,
+        	STATUS,
+        	INSERT_USER,
+        	INSERT_TIME,
+        	UPDATE_USER,
+        	UPDATE_TIME
+        ) VALUES (
+        	#{user_id},
+        	#{user_name},
+        	#{password},
+        	#{real_name},
+        	#{isManager},
+        	#{status},
+        	#{insert_user},
+        	#{insert_time},
+        	#{update_user},
+        	#{update_time}
+        )
+	</insert>
+
+	<!-- 批量插入 chenyufei 2020-03-21 -->
+	<insert id="batchInsert">
+		INSERT INTO T_USER_INFO (
+        	USER_ID,
+        	USER_NAME,
+			PASSWORD,
+			REAL_NAME,
+			IS_MANAGER,
+			STATUS,
+        	INSERT_USER,
+        	INSERT_TIME,
+        	UPDATE_USER,
+        	UPDATE_TIME
+        ) VALUES
+		<foreach collection="list" item="item" separator=",">
+		(
+        	#{item.user_id},
+        	#{item.user_name},
+			#{item.password},
+			#{item.real_name},
+			#{item.isManager},
+			#{item.status},
+        	#{item.insert_user},
+        	#{item.insert_time},
+        	#{item.update_user},
+        	#{item.update_time}
+		)
+		</foreach>
+	</insert>
+
+	<!-- 更新 chenyufei 2020-03-21 -->
+	<update id="update" parameterType="com.iokbl.model.TUserInfo">
+        UPDATE T_USER_INFO 
+		<set>
+			<if test="user_id != null and user_id != '' ">
+				USER_ID = #{user_id},
+			</if>
+			<if test="user_name != null and user_name != '' ">
+				USER_NAME = #{user_name,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null and password != '' ">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="real_name != null and real_name != '' ">
+				REAL_NAME = #{real_name,jdbcType=VARCHAR},
+			</if>
+			<if test="isManager != null and isManager != '' ">
+				IS_MANAGER = #{isManager},
+			</if>
+			<if test="status != null and status != '' ">
+				STATUS = #{status},
+			</if>
+			<if test="insert_user != null and insert_user != '' ">
+				INSERT_USER = #{insert_user},
+			</if>
+			<if test="insert_time != null">
+				INSERT_TIME = #{insert_time},
+			</if>
+			<if test="update_user != null and update_user != '' ">
+				UPDATE_USER = #{update_user},
+			</if>
+			<if test="update_time != null">
+				UPDATE_TIME = #{update_time},
+			</if>
+		</set>
+        WHERE SID = #{sid}
+	</update>
+
+	<!-- 删除 chenyufei 2020-03-21 -->
+	<delete id="delete">
+		DELETE FROM T_USER_INFO
+		 WHERE 1 = 1
+		<if test="sid != null and sid != '' ">
+		   AND SID = #{sid}
+		</if>
+		<if test="user_id != null and user_id != '' ">
+		   AND USER_ID = #{user_id}
+		</if>
+		<if test="user_name != null and user_name != '' ">
+		   AND USER_NAME = #{user_name}
+		</if>
+		<if test="real_name != null and real_name != '' ">
+			AND REAL_NAME = #{real_name,jdbcType=VARCHAR}
+		</if>
+		<if test="isManager != null and isManager != '' ">
+			AND IS_MANAGER = #{isManager}
+		</if>
+		<if test="status != null and status != '' ">
+			AND STATUS = #{status}
+		</if>
+		<if test="insert_user != null and insert_user != '' ">
+		   AND INSERT_USER = #{insert_user}
+		</if>
+		<if test="insert_time != null">
+			AND INSERT_TIME = #{insert_time}
+		</if>
+		<if test="update_user != null and update_user != '' ">
+			AND UPDATE_USER = #{update_user}
+		</if>
+		<if test="update_time != null">
+			AND UPDATE_TIME = #{update_time}
+		</if>
+	</delete>
+
+	<!-- 根据主键ID删除 chenyufei 2020-03-21 -->
+	<delete id="deleteById">
+		DELETE FROM T_USER_INFO 
+		 WHERE SID = #{sid}
+	</delete>
+
+</mapper>
