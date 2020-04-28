@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iokbl.persistence.TUserInfoMapper">
 	
-	<!-- 列结果resultMap chenyufei 2020-03-21 -->
+	<!-- 列结果resultMap chenyufei 2020-04-26 -->
 	<resultMap id="resultMap" type="com.iokbl.model.TUserInfo">
         <result column="SID" property="sid"/>
         <result column="USER_ID" property="user_id"/>
@@ -19,13 +19,13 @@
         <result column="UPDATE_TIME" property="update_time"/>
 	</resultMap>
 
-	<!-- 公共列 chenyufei 2020-03-21 -->
+	<!-- 公共列 chenyufei 2020-04-26 -->
 	<sql id="columns">
 		SID, USER_ID, USER_NAME, PASSWORD, REAL_NAME, IS_MANAGER, STATUS,
 		INSERT_USER, INSERT_TIME, UPDATE_USER, UPDATE_TIME
 	</sql>
 
-	<!-- 公共条件 chenyufei 2020-03-21 -->
+	<!-- 公共条件 chenyufei 2020-04-26 -->
 	<sql id="whereSQL">
 		<if test="sid != null and sid != '' ">
 		AND SID = #{sid}
@@ -62,7 +62,7 @@
 		</if>
 	</sql>
 
-	<!-- 公共分页条件SQL chenyufei 2020-03-21 -->
+	<!-- 公共分页条件SQL chenyufei 2020-04-26 -->
 	<sql id="wherePageSql">
 		<if test="paramMap.sid != null and paramMap.sid != '' ">
 		AND SID = #{paramMap.sid}
@@ -99,14 +99,14 @@
 		</if>
 	</sql>
 
-	<!-- 根据主键ID查询 chenyufei 2020-03-21 -->
+	<!-- 根据主键ID查询 chenyufei 2020-04-26 -->
 	<select id="selectByPrimaryKey" resultMap="resultMap">
 		SELECT <include refid="columns" />
 		  FROM T_USER_INFO 
 	     WHERE SID = #{sid}
 	</select>
 
-	<!-- 查询列表数据条数 chenyufei 2020-03-21 -->
+	<!-- 查询列表数据条数 chenyufei 2020-04-26 -->
 	<select id="selectCount" resultType="java.lang.Long">
 		SELECT count(1)
 		FROM T_USER_INFO
@@ -128,7 +128,7 @@
 		</if>) OR USER_ID = #{user_id}
 	</select>
 
-	<!-- 查询列表 chenyufei 2020-03-21 -->
+	<!-- 查询列表 chenyufei 2020-04-26 -->
 	<select id="selectList" resultMap="resultMap">
 		SELECT <include refid="columns" /> from (
 			SELECT <include refid="columns" />
@@ -154,14 +154,14 @@
 		<if test="start != null and pageSize != null and pageSize != 0"> limit #{start}, #{pageSize}</if>
 	</select>
 
-	<!-- 查询列表 chenyufei 2020-03-21 -->
+	<!-- 查询列表 chenyufei 2020-04-26 -->
 	<select id="selectUserByUserName" resultMap="resultMap">
 		SELECT <include refid="columns" />
 		FROM T_USER_INFO WHERE STATUS = '1'
 		AND USER_NAME = #{user_name,jdbcType=VARCHAR}
 	</select>
 
-	<!-- 查询所有用户 chenyufei 2020-03-21 -->
+	<!-- 查询所有用户 chenyufei 2020-04-26 -->
 	<select id="selectAllUser" resultMap="resultMap">
 		SELECT SID, USER_ID, USER_NAME, REAL_NAME
 		FROM T_USER_INFO WHERE STATUS = '1'
@@ -170,7 +170,7 @@
 		</if>
 	</select>
 
-	<!-- 插入 chenyufei 2020-03-21 -->
+	<!-- 插入 chenyufei 2020-04-26 -->
 	<insert id="insert" useGeneratedKeys="true" keyProperty="sid" parameterType="com.iokbl.model.TUserInfo">
         INSERT INTO T_USER_INFO (
         	USER_ID,
@@ -197,7 +197,7 @@
         )
 	</insert>
 
-	<!-- 批量插入 chenyufei 2020-03-21 -->
+	<!-- 批量插入 chenyufei 2020-04-26 -->
 	<insert id="batchInsert">
 		INSERT INTO T_USER_INFO (
         	USER_ID,
@@ -227,7 +227,7 @@
 		</foreach>
 	</insert>
 
-	<!-- 更新 chenyufei 2020-03-21 -->
+	<!-- 更新 chenyufei 2020-04-26 -->
 	<update id="update" parameterType="com.iokbl.model.TUserInfo">
         UPDATE T_USER_INFO 
 		<set>
@@ -265,7 +265,7 @@
         WHERE SID = #{sid}
 	</update>
 
-	<!-- 删除 chenyufei 2020-03-21 -->
+	<!-- 删除 chenyufei 2020-04-26 -->
 	<delete id="delete">
 		DELETE FROM T_USER_INFO
 		 WHERE 1 = 1
@@ -301,7 +301,7 @@
 		</if>
 	</delete>
 
-	<!-- 根据主键ID删除 chenyufei 2020-03-21 -->
+	<!-- 根据主键ID删除 chenyufei 2020-04-26 -->
 	<delete id="deleteById">
 		DELETE FROM T_USER_INFO 
 		 WHERE SID = #{sid}

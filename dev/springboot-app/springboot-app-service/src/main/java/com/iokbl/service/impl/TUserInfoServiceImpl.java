@@ -18,10 +18,10 @@ import java.util.List;
 /**
  * XXX Service接口 
  * @author chenyufei
- * @date 2020-03-21
+ * @date 2020-04-26
  * =================Modify Record=================
  * @Modifier			@date			@Content
- * chenyufei			2020-03-21			新增
+ * chenyufei			2020-04-26			新增
  */
 @Service
 public class TUserInfoServiceImpl implements TUserInfoService {
@@ -34,7 +34,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 根据主键ID查询
 	 * @author chenyufei 
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	id				主键ID	
 	 * @return	TUserInfo		
 	 */
@@ -48,7 +48,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 查询列表
 	 * @author chenyufei 
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	List<TUserInfo>		
 	 */
@@ -75,7 +75,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 根据用户名查询用户
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	List<TUserInfo>
 	 */
@@ -88,7 +88,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 查询所有用户
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @return	List<TUserInfo>
 	 */
 	@Override
@@ -100,7 +100,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 插入
 	 * @author chenyufei 
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	int						插入成功所影响的行数			
 	 */
@@ -124,7 +124,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 更新
 	 * @author chenyufei 
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	int						更新成功所影响的行数			
 	 */
@@ -144,7 +144,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 删除
 	 * @author chenyufei 
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	int						删除成功所影响的行数			
 	 */
@@ -161,7 +161,7 @@ public class TUserInfoServiceImpl implements TUserInfoService {
 	/**
 	 * 根据主键ID删除
 	 * @author chenyufei 
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	id		主键ID
 	 * @return	int		删除成功所影响的行数			
 	 */

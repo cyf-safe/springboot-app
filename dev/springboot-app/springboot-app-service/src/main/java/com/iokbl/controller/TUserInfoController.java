@@ -21,10 +21,10 @@ import java.util.Map;
 /**
  * XXX Controller接口
  * @author chenyufei
- * @date 2020-03-21
+ * @date 2020-04-26
  * =================Modify Record=================
  * @Modifier			@date			@Content
- * chenyufei			2020-03-21			新增
+ * chenyufei			2020-04-26			新增
  */
 @RequestMapping("/tUserInfo")
 @RestController
@@ -38,7 +38,7 @@ public class TUserInfoController {
 	/**
 	 * 根据主键ID查询
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	sid				主键ID
 	 * @return	TUserInfo
 	 */
@@ -60,7 +60,7 @@ public class TUserInfoController {
 	/**
 	 * 查询列表
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	List<TUserInfo>
 	 */
@@ -83,7 +83,7 @@ public class TUserInfoController {
 	/**
 	 * 根据用户名查询用户
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	List<TUserInfo>
 	 */
@@ -126,7 +126,7 @@ public class TUserInfoController {
 	/**
 	 * 查询所有用户
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @return	List<TUserInfo>
 	 */
 	@RequestMapping(value = "/selectAllUser.htm", method = RequestMethod.POST)
@@ -147,7 +147,7 @@ public class TUserInfoController {
 	/**
 	 * 插入
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	int						插入成功所影响的行数
 	 */
@@ -167,7 +167,7 @@ public class TUserInfoController {
 	/**
 	 * 更新
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	int						更新成功所影响的行数
 	 */
@@ -187,7 +187,7 @@ public class TUserInfoController {
 	/**
 	 * 删除
 	 * @author chenyufei
-	 * @date 2020-03-21
+	 * @date 2020-04-26
 	 * @param 	tUserInfo		参数含义
 	 * @return	int						删除成功所影响的行数
 	 */

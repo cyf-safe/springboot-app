@@ -7,10 +7,10 @@ import java.io.Serializable;
 /**
  * XXX MODEL 
  * @author chenyufei
- * @date 2020-03-21
+ * @date 2020-04-26
  * =================Modify Record=================
  * @Modifier			@date			@Content
- * chenyufei			2020-03-21			新增
+ * chenyufei			2020-04-26			新增
  */ 
 public class TUserInfo extends PagePara implements Serializable {
 	private static final long serialVersionUID = 1L;
