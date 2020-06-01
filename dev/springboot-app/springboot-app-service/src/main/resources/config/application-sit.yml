@@ -28,7 +28,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8847
+        server-addr: 127.0.0.1:8848
         # 命名空间：sit、prd、dev
         namespace: 00ce3738-89e9-46fd-9c44-675d9f4ef77c
         # 分组
