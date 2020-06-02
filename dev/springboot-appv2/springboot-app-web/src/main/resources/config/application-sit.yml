@@ -1,0 +1,108 @@
+server: 
+  port: 8080
+  servlet: 
+    context-path: /
+
+spring:
+
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    static-path-pattern: /**
+    async:
+      request-timeout: 20000
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        # 命名空间：sit、prd、dev
+        namespace: 00ce3738-89e9-46fd-9c44-675d9f4ef77c
+        # 分组
+        group: sit
+        # 集群
+        cluster-name: SH
+        # 版本
+        metadata:
+          version: v1
+    sentinel:
+      transport:
+        dashboard: localhost:8088
+      filter:
+        enabled: true
+
+  thymeleaf:
+    prefix: classpath:/templates/jsp/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false
+
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+    static-locations: classpath:/templates/,classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
+
+  freemarker:
+    request-context-attribute: ctx
+    suffix: .html
+    content-type: text/html
+    enabled: true
+    cache: false
+    template-loader-path: classpath:/templates/jsp/
+
+#Redis
+  redis:
+    database: 0
+    host: 127.0.0.1
+    ## Redis服务器连接端口
+    port: 6379
+    ## 连接超时时间（毫秒）
+    timeout: 1000
+    ## Redis服务器连接密码（默认为空）
+    password:
+    pool:
+      # 连接池最大连接数（使用负值表示没有限制）
+      max-active: 200
+      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: -1
+      # 连接池中的最大空闲连接
+      max-idle: 100
+      # 连接池中的最小空闲连接
+      min-idle: 20
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+ribbon:
+  connectTimeout: 5000
+  readTimeout: 5000
+  http:
+  client:
+  enabled: true
+
+springboot-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.iokbl.config.ribbon.WeightedRule
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000
+
+login:
+  timeout:
+    minutes: 60
