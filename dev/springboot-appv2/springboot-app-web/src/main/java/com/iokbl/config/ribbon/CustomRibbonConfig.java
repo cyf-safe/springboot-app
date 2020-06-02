@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Slf4j
+@Slf4j
 @RibbonClients(value = {
         @RibbonClient(name = "sprintboot-service",configuration = PlanMainServiceRibbonConfig.class),
        @RibbonClient(name = "sprintboot-other-service",configuration = PlanOtherServiceRibbonConfig.class)
