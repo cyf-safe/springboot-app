@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestOperations;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class HttpClientUtil<T> {
 
     private static CloseableHttpClient httpClient ;
 
-	public String doPost(RestTemplate restTemplate, String url, T t){
+	public String doPost(RestOperations restTemplate, String url, T t){
 		String result = null;
 
 		if(!StringUtils.isEmpty(url)) {
@@ -50,6 +50,7 @@ public class HttpClientUtil<T> {
 				//获取3方接口返回的数据通过entity.getBody();它返回的是一个字符串；
 				result = responseEntity.getBody();
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.error("HttpClientUtil.doPost： {} exceptionAbstract：{} exceptionDetail：{}",new Object[]{url,e.toString(),e.getStackTrace()});
 			}
 		} else {

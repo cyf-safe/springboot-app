@@ -1,9 +1,8 @@
 package com.iokbl.config;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 
-@WebFilter(filterName = "loginFilter", urlPatterns = "/*.htm")
+//@WebFilter(filterName = "loginFilter", urlPatterns = "/*.htm")
 public class LoginFilter implements Filter {
 
     @Override
