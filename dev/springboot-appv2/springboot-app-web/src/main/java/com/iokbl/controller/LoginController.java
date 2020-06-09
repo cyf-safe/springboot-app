@@ -2,7 +2,7 @@ package com.iokbl.controller;
 
 import com.iokbl.config.ConfigConstants;
 import com.iokbl.config.Constants;
-import com.iokbl.config.LoginBloomFilter;
+import com.iokbl.utils.LoginBloomFilter;
 import com.iokbl.feignapi.springbootservice.SpringBootServiceApi;
 import com.iokbl.model.TUserInfo;
 import com.iokbl.service.TUserInfoService;

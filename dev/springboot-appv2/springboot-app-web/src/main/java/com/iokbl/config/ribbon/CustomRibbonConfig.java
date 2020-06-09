@@ -7,12 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 @Slf4j
 @RibbonClients(value = {
-        @RibbonClient(name = "sprintboot-service",configuration = PlanMainServiceRibbonConfig.class),
-       @RibbonClient(name = "sprintboot-other-service",configuration = PlanOtherServiceRibbonConfig.class)
+       @RibbonClient(name = "springboot-service",configuration = PlanMainServiceRibbonConfig.class),
+       @RibbonClient(name = "springboot-other-service",configuration = PlanOtherServiceRibbonConfig.class)
 })
 public class CustomRibbonConfig {
 
