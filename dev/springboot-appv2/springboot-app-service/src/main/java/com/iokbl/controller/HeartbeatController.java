@@ -19,7 +19,7 @@ public class HeartbeatController {
 
 	@RequestMapping("/ping")
 	@ResponseBody
-	@HystrixCommand(fallbackMethod = "myFallback")
+	@HystrixCommand(fallbackMethod = "fallback")
 	public Map<String,Object> ping(HttpServletRequest request){
 		logger.info("正在检测plan-web应用是否正常运行");
 
@@ -42,7 +42,7 @@ public class HeartbeatController {
 	 * @param t
 	 * @return
 	 */
-	public Map<String,Object> myFallback(HttpServletRequest request, Throwable t) {
+	public Map<String,Object> fallback(HttpServletRequest request, Throwable t) {
 		String msg = "服务拥挤，请稍后再试！";
 		return ResultUtil.creatErrorResult(msg);
 	}
