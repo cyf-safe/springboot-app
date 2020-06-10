@@ -1,6 +1,7 @@
 package com.iokbl.controller;
 
 import com.iokbl.model.common.ResultUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ public class HeartbeatController {
 
 	@RequestMapping("/ping")
 	@ResponseBody
+	@HystrixCommand(fallbackMethod = "myFallback")
 	public Map<String,Object> ping(HttpServletRequest request){
 		logger.info("正在检测plan-web应用是否正常运行");
 
@@ -33,4 +35,16 @@ public class HeartbeatController {
 			return ResultUtil.creatErrorResult(e.getMessage());
 		}
 	}
+
+	/**
+	 * 方法simpleHystrixClientCall的回退方法，可以指定将hystrix执行失败异常传入到方法中
+	 * @param request hystrix执行失败的异常对象
+	 * @param t
+	 * @return
+	 */
+	public Map<String,Object> myFallback(HttpServletRequest request, Throwable t) {
+		String msg = "服务拥挤，请稍后再试！";
+		return ResultUtil.creatErrorResult(msg);
+	}
+
 }

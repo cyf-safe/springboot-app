@@ -18,6 +18,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableEurekaClient
 //@EnableCircuitBreaker
+//@EnableHystrix
+//@EnableHystrixDashboard
 @ServletComponentScan(basePackages = "com.iokbl.config")
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600) // 秒
 public class MySpringBootApplication {

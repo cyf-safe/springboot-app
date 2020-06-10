@@ -2,11 +2,12 @@ package com.iokbl.controller;
 
 import com.iokbl.config.ConfigConstants;
 import com.iokbl.config.Constants;
-import com.iokbl.utils.LoginBloomFilter;
 import com.iokbl.feignapi.springbootservice.SpringBootServiceApi;
 import com.iokbl.model.TUserInfo;
 import com.iokbl.service.TUserInfoService;
 import com.iokbl.utils.BCryptPasswordUtils;
+import com.iokbl.utils.LoginBloomFilter;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
