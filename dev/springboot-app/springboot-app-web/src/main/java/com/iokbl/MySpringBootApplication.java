@@ -32,7 +32,7 @@ public class MySpringBootApplication {
     }
 
     @Bean
-    public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
+    public ClientHttpRequestFactory ribbonClientHttpRequestFactory() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
         factory.setReadTimeout(180000);//单位为ms
         factory.setConnectTimeout(5000);//单位为ms
